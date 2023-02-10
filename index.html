@@ -162,30 +162,51 @@
 
                 <!-- FILTER/TODO LIST -->
                 <div class="row">
-                  <!-- FILTER -->
+                  <!-- LEFT FILTER -->
                   <div class="col-4">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Default checkbox
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckChecked"
-                        checked
-                      />
-                      <label class="form-check-label" for="flexCheckChecked">
-                        Checked checkbox
-                      </label>
+                    <div class="filter-task-list">
+                      <!-- STATUS FILTER -->
+                      <h4 class="fw-bolder fs-5">FILTER:</h4>
+                      <div class="filter-status">
+                        <p class="filter-title mb-2">Status Filter</p>
+
+                        <div class="form-check status-check">
+                          <input
+                            class="form-check-input mt-0"
+                            type="checkbox"
+                            value="all-task"
+                            id="all-task"
+                          />
+                          <label class="form-check-label" for="all-task">
+                            All Task
+                          </label>
+                        </div>
+
+                        <div class="form-check status-check">
+                          <input
+                            class="form-check-input mt-0"
+                            type="checkbox"
+                            value="open-task"
+                            id="open-task"
+                          />
+                          <label class="form-check-label" for="open-task">
+                            Open Task
+                          </label>
+                        </div>
+
+                        <div class="form-check status-check">
+                          <input
+                            class="form-check-input mt-0"
+                            type="checkbox"
+                            value="complete-task"
+                            id="complete-task"
+                          />
+                          <label class="form-check-label" for="complete-task">
+                            Complete Task
+                          </label>
+                        </div>
+                        <!-- End Filter Status -->
+                      </div>
                     </div>
                   </div>
 
