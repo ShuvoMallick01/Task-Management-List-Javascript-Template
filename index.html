@@ -103,79 +103,32 @@
                 </form>
                 <hr />
 
-                <!-- FILTER SECTION -->
-                <div
-                  class="d-flex align-items-center gap-3 justify-content-between"
-                >
-                  <p class="mb-0 fw-bold text-secondary">Filter:</p>
-                  <div class="filter-actions d-flex gap-3">
-                    <!-- STATUS FILTER -->
-                    <select
-                      class="form-select task-status-filter"
-                      aria-label="Default select example"
-                    >
-                      <!-- <option disabled selected>Status</option>
-                      <option value="all" id="all">
-                        All-(<span class="all-task-length">0</span>)
-                      </option>
-                      <option value="open" id="open">
-                        Open-(<span class="open-task-length">0</span>)
-                      </option>
-                      <option value="complete" id="complete">
-                        Complete-(<span class="complete-task-length">0</span>)
-                      </option> -->
-                    </select>
-
-                    <!-- PRIORITY FILTER -->
-                    <select
-                      class="form-select task-priority-filter"
-                      aria-label="Default select example"
-                    >
-                      <option disabled selected>Task Priority</option>
-                      <option value="emergency">Emergency</option>
-                      <option value="regular">Regular</option>
-                      <option value="urgent">Urgent</option>
-                    </select>
-
-                    <!-- ASSIGN FILTER -->
-                    <select
-                      class="form-select task-assigned-filter"
-                      aria-label="Default select example"
-                    >
-                      <option disabled selected>Task Assigned</option>
-                      <option value="shuvo">Shuvo</option>
-                      <option value="nabed">Nabed</option>
-                      <option value="alamin">Al Amin</option>
-                    </select>
-                  </div>
-                </div>
-                <hr />
-
                 <!-- SEARCH INPUT -->
                 <input
                   type="text"
                   id="search"
-                  class="search-input form-control mt-2"
-                  placeholder="Search.."
+                  class="search-input form-control mt-2 mb-4"
+                  placeholder="Search Task .."
                 />
-                <hr />
 
                 <!-- FILTER/TODO LIST -->
                 <div class="row">
                   <!-- LEFT FILTER -->
-                  <div class="col-4">
-                    <div class="filter-task-list">
-                      <!-- STATUS FILTER -->
+                  <div class="col-4 col-xl-3">
+                    <div class="filter-task">
                       <h4 class="fw-bolder fs-5">FILTER:</h4>
+
+                      <!-- STATUS FILTER -->
                       <div class="filter-status">
-                        <p class="filter-title mb-2">Status Filter</p>
+                        <p class="filter-title mb-2">Status</p>
 
                         <div class="form-check status-check">
                           <input
-                            class="form-check-input mt-0"
+                            class="form-check-input mt-0 status-filter"
                             type="checkbox"
-                            value="all-task"
-                            id="all-task"
+                            value="all"
+                            name="statusfilter"
+                            id="all-task "
                           />
                           <label class="form-check-label" for="all-task">
                             All Task
@@ -184,9 +137,10 @@
 
                         <div class="form-check status-check">
                           <input
-                            class="form-check-input mt-0"
+                            class="form-check-input mt-0 status-filter"
                             type="checkbox"
-                            value="open-task"
+                            value="open"
+                            name="statusfilter"
                             id="open-task"
                           />
                           <label class="form-check-label" for="open-task">
@@ -196,55 +150,149 @@
 
                         <div class="form-check status-check">
                           <input
-                            class="form-check-input mt-0"
+                            class="form-check-input mt-0 status-filter"
                             type="checkbox"
-                            value="complete-task"
-                            id="complete-task"
+                            name="statusfilter"
+                            value="complete"
+                            id="complete-task "
                           />
-                          <label class="form-check-label" for="complete-task">
+                          <label class="form-check-label" for="complete">
                             Complete Task
                           </label>
                         </div>
                         <!-- End Filter Status -->
                       </div>
+                      <hr class="me-3" />
+
+                      <!-- TASK PRIORITY FILTER -->
+                      <div class="filter-status">
+                        <p class="filter-title mb-2">Task Priority</p>
+
+                        <div class="form-check status-check">
+                          <input
+                            class="form-check-input mt-0 priorityFilter"
+                            type="checkbox"
+                            value="emergency"
+                            name="statusfilter"
+                            id="emergency"
+                          />
+                          <label class="form-check-label" for="emergency">
+                            Emergency Task
+                          </label>
+                        </div>
+
+                        <div class="form-check status-check">
+                          <input
+                            class="form-check-input mt-0 priorityFilter"
+                            type="checkbox"
+                            value="regular"
+                            name="statusfilter"
+                            id="regular"
+                          />
+                          <label class="form-check-label" for="regular">
+                            Regular Task
+                          </label>
+                        </div>
+
+                        <div class="form-check status-check">
+                          <input
+                            class="form-check-input mt-0 priorityFilter"
+                            type="checkbox"
+                            name="statusfilter"
+                            value="urgent"
+                            id="urgent"
+                          />
+                          <label class="form-check-label" for="urgent">
+                            Urgent Task
+                          </label>
+                        </div>
+                      </div>
+                      <hr class="me-3" />
+
+                      <!-- TASK ASSIGNED FILTER -->
+                      <div class="filter-status">
+                        <p class="filter-title mb-2">Task Assigned</p>
+
+                        <div class="form-check">
+                          <input
+                            class="form-check-input mt-0 assignedFilter"
+                            type="checkbox"
+                            value="shuvo"
+                            name="statusfilter"
+                            id="shuvo"
+                          />
+                          <label class="form-check-label" for="shuvo">
+                            Shuvo
+                          </label>
+                        </div>
+
+                        <div class="form-check">
+                          <input
+                            class="form-check-input mt-0 assignedFilter"
+                            type="checkbox"
+                            value="nabed"
+                            name="nabed"
+                            id="nabed"
+                          />
+                          <label class="form-check-label" for="nabed">
+                            Nabed
+                          </label>
+                        </div>
+
+                        <div class="form-check">
+                          <input
+                            class="form-check-input mt-0 assignedFilter"
+                            type="checkbox"
+                            name="statusfilter"
+                            value="al amin"
+                            id="alamin"
+                          />
+                          <label class="form-check-label" for="alamin">
+                            Al Amin
+                          </label>
+                        </div>
+                      </div>
+                      <!-- End Filter -->
                     </div>
                   </div>
 
                   <!-- TO DO LIST-->
-                  <div class="task-list col-8">
-                    <!-- Single To Do-->
-                    <div class="task-item">
-                      <div class="d-flex gap-3">
-                        <input
-                          id="complete"
-                          class="form-check-input"
-                          type="checkbox"
-                        />
+                  <div class="col-8 col-xl-9">
+                    <div class="task-list ms-2">
+                      <!-- Single To Do-->
+                      <div class="task-item">
+                        <div class="d-flex gap-3">
+                          <input
+                            id="complete"
+                            class="form-check-input"
+                            type="checkbox"
+                          />
 
-                        <div>
-                          <h5 class="task-title">Ract Template</h5>
-                          <span class="badge text-bg-primary">Emergency</span>
-                          <span class="badge text-bg-primary"
-                            >Assigned For Shuvo</span
-                          >
-                          <p class="task-createAt text-muted">
-                            Today at 8:00PM
-                          </p>
+                          <div>
+                            <h5 class="task-title">Ract Template</h5>
+                            <span class="badge text-bg-primary">Emergency</span>
+                            <span class="badge text-bg-primary"
+                              >Assigned For Shuvo</span
+                            >
+                            <p class="task-createAt text-muted">
+                              Today at 8:00PM
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="task-actions d-flex align-items-center">
+                          <i
+                            id="edit"
+                            class="fa-solid fa-pen-to-square text-success edit-btn"
+                          ></i>
+                          <i
+                            id="delete"
+                            class="fa-solid fa-trash text-danger delete-btn"
+                          ></i>
                         </div>
                       </div>
-
-                      <div class="task-actions d-flex align-items-center">
-                        <i
-                          id="edit"
-                          class="fa-solid fa-pen-to-square text-success edit-btn"
-                        ></i>
-                        <i
-                          id="delete"
-                          class="fa-solid fa-trash text-danger delete-btn"
-                        ></i>
-                      </div>
+                      <!-- End Task  -->
                     </div>
-                    <!-- End Task  -->
                   </div>
                 </div>
                 <!-- End Card Body -->

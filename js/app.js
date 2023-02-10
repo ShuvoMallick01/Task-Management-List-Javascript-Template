@@ -6,15 +6,22 @@ const taskPriority = document.querySelector('.task-priority');
 const taskAssigned = document.querySelector('.task-assigned');
 const taskListWrapper = document.querySelector('.task-list');
 
-// FILTER
+// FILTER (No Need)
 const taskStatusFilter = document.querySelector('.task-status-filter');
 const taskPriorityFilter = document.querySelector('.task-priority-filter');
 const taskAssignedFilter = document.querySelector('.task-assigned-filter');
 
+// STATUS FILTER (No Need)
 const allBtn = document.getElementById('all');
 const openBtn = document.getElementById('open');
 const completeBtn = document.getElementById('complete');
 
+// FILTER
+const statusCheckFilter = document.querySelectorAll('.status-filter');
+const priorityCheckFilter = document.querySelectorAll('.priorityFilter');
+const assignedCheckFilter = document.querySelectorAll('.assignedFilter');
+
+//STATUS
 const searchInput = document.getElementById('search');
 
 let taskList = [];
@@ -114,7 +121,7 @@ function deleteTask(id) {
     taskList = taskList.filter((item) => item.id !== id);
     localStorage.setItem('tasks', JSON.stringify(taskList));
 
-    showLength();
+    // showLength();
     renderUI(taskList);
   }
 }
@@ -127,65 +134,107 @@ function completeTask(id) {
   });
 
   localStorage.setItem('tasks', JSON.stringify(taskList));
-  showLength();
+  // showLength();
   renderUI(taskList);
 }
 
 // SHOW LENGTH TASK
-function showLength() {
-  const openTasks = taskList.filter((item) => item.complete === false);
-  const completeTasks = taskList.filter((item) => item.complete === true);
+// function showLength() {
+//   const openTasks = taskList.filter((item) => item.complete === false);
+//   const completeTasks = taskList.filter((item) => item.complete === true);
 
-  taskStatusFilter.innerHTML = '';
+//   taskStatusFilter.innerHTML = '';
 
-  const markup = `<option disabled selected>Status</option>
-    <option value="all" id="all">
-      All-(<span class="all-task-length">${taskList.length}</span>)
-    </option>
-    <option value="open" id="open">
-      Open-(<span class="open-task-length">${openTasks.length}</span>)
-    </option>
-    <option value="complete" id="complete">
-      Complete-(<span class="complete-task-length">${completeTasks.length}</span>)
-    </option>`;
+//   const markup = `<option disabled selected>Status</option>
+//     <option value="all" id="all">
+//       All-(<span class="all-task-length">${taskList.length}</span>)
+//     </option>
+//     <option value="open" id="open">
+//       Open-(<span class="open-task-length">${openTasks.length}</span>)
+//     </option>
+//     <option value="complete" id="complete">
+//       Complete-(<span class="complete-task-length">${completeTasks.length}</span>)
+//     </option>`;
 
-  taskStatusFilter.insertAdjacentHTML(`afterbegin`, markup);
-  console.log(taskStatusFilter);
-}
+//   taskStatusFilter.insertAdjacentHTML(`afterbegin`, markup);
+//   console.log(taskStatusFilter);
+// }
 
 // STATUS FILTER
-taskStatusFilter.addEventListener('change', (e) => {
-  switch (taskStatusFilter.value) {
-    case 'all':
+statusCheckFilter.forEach((item) => {
+  item.addEventListener('click', function (e) {
+    const currentItem = e.target;
+    statusCheckFilter.forEach((item) => {
+      if (currentItem != item && currentItem.checked) {
+        item.checked = false;
+      }
+    });
+  });
+
+  item.addEventListener('change', (e) => {
+    if (item.checked) {
+      let filterValue = item.value;
+      if (filterValue === 'open') {
+        let openTasks = taskList.filter((item) => item.complete === false);
+        renderUI(openTasks);
+      } else if (filterValue === 'complete') {
+        let completeTasks = taskList.filter((item) => item.complete === true);
+        renderUI(completeTasks);
+      } else {
+        renderUI(taskList);
+      }
+    } else {
       renderUI(taskList);
-      break;
-
-    case 'open':
-      let openTasks = taskList.filter((item) => item.complete === false);
-      renderUI(openTasks);
-      break;
-
-    case 'complete':
-      let completeTasks = taskList.filter((item) => item.complete === true);
-      renderUI(completeTasks);
-      break;
-  }
+    }
+  });
 });
 
 // PRIORITY FILTER
-taskPriorityFilter.addEventListener('change', (e) => {
-  let priorityTasks = taskList.filter(
-    (item) => item.priority.toLowerCase() === taskPriorityFilter.value
-  );
-  renderUI(priorityTasks);
+priorityCheckFilter.forEach((item) => {
+  item.addEventListener('click', function (e) {
+    const currentItem = e.target;
+    priorityCheckFilter.forEach((item) => {
+      if (currentItem != item && currentItem.checked) {
+        item.checked = false;
+      }
+    });
+  });
+
+  item.addEventListener('change', (e) => {
+    if (item.checked) {
+      let priorityValue = item.value;
+      let priorityTasks = taskList.filter(
+        (item) => item.priority.toLowerCase() === priorityValue
+      );
+      renderUI(priorityTasks);
+    } else {
+      renderUI(taskList);
+    }
+  });
 });
 
 // TASK ASSIGN FILTER
-taskAssignedFilter.addEventListener('change', (e) => {
-  let emergencyTasks = taskList.filter(
-    (item) => item.assigned.toLowerCase() === taskAssignedFilter.value
-  );
-  renderUI(emergencyTasks);
+assignedCheckFilter.forEach((item) => {
+  item.addEventListener('click', function (e) {
+    const currentItem = e.target;
+    assignedCheckFilter.forEach((item) => {
+      if (currentItem != item && currentItem.checked) {
+        item.checked = false;
+      }
+    });
+  });
+
+  item.addEventListener('change', (e) => {
+    if (item.checked) {
+      let assignedValue = item.value;
+      let assignedTasks = taskList.filter(
+        (item) => item.assigned.toLowerCase() === assignedValue
+      );
+      renderUI(assignedTasks);
+    } else {
+      renderUI(taskList);
+    }
+  });
 });
 
 // SEARCH TASKS
@@ -246,7 +295,7 @@ taskForm.addEventListener('submit', (e) => {
   }
 
   localStorage.setItem('tasks', JSON.stringify(taskList));
-  showLength();
+  // showLength();
   renderUI(taskList);
   taskInput.value = '';
 });
@@ -256,7 +305,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   if (localStorage.getItem('tasks')) {
     taskList = JSON.parse(localStorage.getItem('tasks'));
   }
-  showLength();
+  // showLength();
   renderUI(taskList);
 });
 

@@ -128,6 +128,10 @@ input[type='checkbox'] {
 } */
 
 /* ===== FILTER START===== */
+.filter-task {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 0px 0px;
+}
+
 .filter-title {
   font-weight: 600;
   font-size: 18px;
