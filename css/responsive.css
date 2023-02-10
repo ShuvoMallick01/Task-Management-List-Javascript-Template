@@ -1,0 +1,19 @@
+/* ========== DESKTOP ========== */
+/* `xl` applies to large devices (desktops, less than 1200px) */
+@media (max-width: 1200px) {
+}
+
+/* ========== TABLETS ========== */
+/* 'lg' applies to medium devices (tablets, less than 992px) */
+@media (max-width: 992px) {
+}
+
+/* ========== LANDSCAPE PHONE ========== */
+/* 'md' applies to small device (landscape phones, loess then 768px) */
+@media (max-width: 768px) {
+}
+
+/* ========== MOBILE ==========*/
+/* sm applies to x-small devices (portrait phones, less than 576px)  */
+@media (max-width: 576px) {
+}

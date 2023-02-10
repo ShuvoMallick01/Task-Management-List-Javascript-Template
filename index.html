@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Fontawesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Bootstrap CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Custom Js -->
+    <script src="js/app.js" defer></script>
+    <!-- Website Title -->
+    <title>Task Management</title>
+  </head>
+
+  <body>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3 px-xl-5">
+            <div class="card border-0 shadow-lg">
+              <!-- TOP BANNER IMAGE -->
+              <div class="card-top position-relative">
+                <h2
+                  class="d-flex align-items-center justify-content-center fw-semibold"
+                >
+                  Task Management
+                </h2>
+                <!-- Date & Time -->
+                <div
+                  class="info d-flex gap-2 align-items-center justify-content-between position-absolute bottom-0 p-3"
+                >
+                  <p class="text-white mb-0" id="date">Thur 9</p>
+                  <p class="text-white mb-0 pb-0" id="time">6:23 AM</p>
+                </div>
+              </div>
+
+              <div class="card-body p-md-4">
+                <!-- TASK FORM -->
+                <form class="task-form">
+                  <div class="todo-input d-flex gap-3 mb-2">
+                    <input
+                      type="text"
+                      id="task-input"
+                      placeholder="Note"
+                      class="form-control"
+                    />
+                    <button class="btn" type="submit">
+                      <i class="fa-solid fa-plus text-white"></i>
+                    </button>
+                  </div>
+
+                  <!-- Task Priority -->
+                  <div class="d-flex gap-3">
+                    <select
+                      class="task-priority form-select"
+                      aria-label="Default select example"
+                    >
+                      <option value="default" disabled selected>
+                        Task Priority
+                      </option>
+                      <option value="Emergency">Emergency</option>
+                      <option value="Regular">Regular</option>
+                      <option value="Urgent">Urgent</option>
+                    </select>
+
+                    <!-- Task Assigned -->
+                    <select
+                      class="task-assigned form-select"
+                      aria-label="Default select example"
+                    >
+                      <option value="default" disabled selected>
+                        Task Assigned
+                      </option>
+                      <option value="Shuvo">Shuvo</option>
+                      <option value="Nabed">Nabed</option>
+                      <option value="Al Amin">Al Amin</option>
+                    </select>
+                  </div>
+                </form>
+                <hr />
+
+                <!-- FILTER SECTION -->
+                <div
+                  class="d-flex align-items-center gap-3 justify-content-between"
+                >
+                  <p class="mb-0 fw-bold text-secondary">Filter:</p>
+                  <div class="filter-actions d-flex gap-3">
+                    <!-- STATUS FILTER -->
+                    <select
+                      class="form-select task-status-filter"
+                      aria-label="Default select example"
+                    >
+                      <!-- <option disabled selected>Status</option>
+                      <option value="all" id="all">
+                        All-(<span class="all-task-length">0</span>)
+                      </option>
+                      <option value="open" id="open">
+                        Open-(<span class="open-task-length">0</span>)
+                      </option>
+                      <option value="complete" id="complete">
+                        Complete-(<span class="complete-task-length">0</span>)
+                      </option> -->
+                    </select>
+
+                    <!-- PRIORITY FILTER -->
+                    <select
+                      class="form-select task-priority-filter"
+                      aria-label="Default select example"
+                    >
+                      <option disabled selected>Task Priority</option>
+                      <option value="emergency">Emergency</option>
+                      <option value="regular">Regular</option>
+                      <option value="urgent">Urgent</option>
+                    </select>
+
+                    <!-- ASSIGN FILTER -->
+                    <select
+                      class="form-select task-assigned-filter"
+                      aria-label="Default select example"
+                    >
+                      <option disabled selected>Task Assigned</option>
+                      <option value="shuvo">Shuvo</option>
+                      <option value="nabed">Nabed</option>
+                      <option value="alamin">Al Amin</option>
+                    </select>
+                  </div>
+                </div>
+                <hr />
+
+                <!-- SEARCH INPUT -->
+                <input
+                  type="text"
+                  id="search"
+                  class="search-input form-control mt-2"
+                  placeholder="Search.."
+                />
+                <hr />
+
+                <!-- TO DO LIST-->
+                <div class="task-list mt-4">
+                  <!-- Single To Do-->
+                  <div class="task-item">
+                    <div class="d-flex gap-3">
+                      <input
+                        id="complete"
+                        class="form-check-input"
+                        type="checkbox"
+                      />
+
+                      <div>
+                        <h5 class="task-title">Ract Template</h5>
+                        <span class="badge text-bg-primary">Emergency</span>
+                        <span class="badge text-bg-primary"
+                          >Assigned For Shuvo</span
+                        >
+                        <p class="task-createAt text-muted">Today at 8:00PM</p>
+                      </div>
+                    </div>
+
+                    <div class="task-actions d-flex align-items-center">
+                      <i
+                        id="edit"
+                        class="fa-solid fa-pen-to-square text-success edit-btn"
+                      ></i>
+                      <i
+                        id="delete"
+                        class="fa-solid fa-trash text-danger delete-btn"
+                      ></i>
+                    </div>
+                  </div>
+                  <!-- End Task  -->
+                </div>
+                <!-- End Card Body -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- TO-DO LIST END -->
+
+    <!-- Bootstrap JS JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
